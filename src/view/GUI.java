@@ -10,10 +10,9 @@ public class GUI extends BorderPane {
 	public GUI(double screenWidth, double screenHeight, Toolbar toolbar) {
         this.toolbar = toolbar;
         gridDisplay = new Group();
-        borderPane.setLeft(gridDisplay);
-        borderPane.setRight(toolbar);
+        setCenter(gridDisplay);
+        setRight(toolbar);
 		scene = new Scene(this, screenWidth, screenHeight);
-
 	}
 
     public void setGridDisplay(Grid grid) {
