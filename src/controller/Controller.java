@@ -6,6 +6,8 @@ public class Controller implements Observer {
     private final double MIN_ANIMATION_SPEED = 0.1;
     private final double ANIMATION_SPEED_INTERVAL = 0.1;
     private final double DELAY = 1000;
+    private final double GRID_WIDTH = 500;
+    private final double GRID_HEIGHT = 500;
     private GUI view;
     private Toolbar toolbar;
     private Timeline timeline;
@@ -17,17 +19,23 @@ public class Controller implements Observer {
 
 
     public Controller(Stage stage){
-        xmlParser = new XMLParser();
         simulationInProgress = false;
         animnationSpeed = 1.0;
+        xmlParser = new XMLParser();
+        toolbar = new Toolbar(stage.getWidth(), stage.getHeight());
+        GUI view = new GUI(stage.getWdith(), stage.getHeight(), toolbar);
+        stage.setScene(view.getScene());
+        toolbar.addObserver(this);
     }
 
-    private void startNewSimulation(File file) {
+    private void startNewSimulation() {
+        File file = toolbar.getSelectedFile();
         Document document = xmlParser.parseXMLFile(file);
-        // need to retrieve simulation height/width
-        SimulationGenerator generator = new SimulationGenerator(document, 800, 800);
+        SimulationGenerator generator = new SimulationGenerator(document, GRID_WIDTH, GRID_HEIGHT);
         simulation = generator.getSimulation();
         Grid grid = simulation.getGrid();
+        view.setGridDisplay(grid);
+
         initializeTimeline();
         timeline.play();
         simulationInProgress = true;

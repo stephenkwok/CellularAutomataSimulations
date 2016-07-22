@@ -7,6 +7,7 @@ public class Toolbar extends Observable {
 
 	private static final double PERCENT_OF_SCREEN_WIDTH = .30;
 	private VBox container;
+    private File selectedFile;
 	
 	public Toolbar(DoubleExpression parentWidth, DoubleExpression parentHeight) {
 		container = new VBox();
@@ -34,6 +35,15 @@ public class Toolbar extends Observable {
         container.getChildren().add(button);
     }
 
+    private void addSelectXMLFileButtonToToolbar() {
+        Button button = new Button("Select XML File");
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new ExtensionFilter("XML Files", "*.xml"));
+        selectedFile = fileChooser.showOpenDialog(myStage);
+        notifyController("startNewSimulation");
+    }
+
     private void pauseOrResumeSimulation(Button button) {
         togglePauseResumeButtonText(button);
         notifyController("pauseOrResumeSimulation");
@@ -52,6 +62,7 @@ public class Toolbar extends Observable {
 
     private VBox getContainer() {return container;}
 
+    private File getSelectedFile() {return selectedFile;}
 
 
 
