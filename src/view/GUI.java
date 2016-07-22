@@ -1,17 +1,22 @@
 package view;
 
-import javafx.beans.binding.DoubleExpression;
-import javafx.scene.layout.HBox;
+public class GUI {
 
-public class Toolbar {
+    private Group gridDisplay;
+	private Scene scene;
+	private BorderPane borderPane;
+    private Toolbar toolbar;
 
-	private static final double PERCENT_OF_SCREEN_WIDTH = .30;
-	private HBox container;
-	
-	public Toolbar(DoubleExpression parentWidth, DoubleExpression parentHeight) {
-		container = new HBox();
-		container.prefWidthProperty().bind(parentWidth.multiply(PERCENT_OF_SCREEN_WIDTH));
-		container.prefHeightProperty().bind(parentHeight);
+	public GUI(double screenWidth, double screenHeight) {
+        gridDisplay = new Group();
+        toolbar = new Toolbar();
+        borderPane = new BorderPane();
+        borderPane.setLeft(gridDisplay);
+        borderPane.setRight(toolbar);
+		scene = new Scene(borderPane, screenWidth, screenHeight);
+
 	}
+
+	public Scene getScene() {return new Scene();}
 	
 }

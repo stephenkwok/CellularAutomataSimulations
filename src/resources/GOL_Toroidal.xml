@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <simulation>
+
+        <simulationType>GameOfLife</simulationType>
+        <numberOfRows>4</numberOfRows>
+        <numberOfColumns>4</numberOfColumns>
+        <gridType>GridToroidal</gridType>
+        <cellType>CellSquare</cellType>
+        <rows>
+            <row>1000</row>
+            <row>0000</row>
+            <row>0000</row>
+            <row>1001</row>
+        </rows>
+
+    </simulation>

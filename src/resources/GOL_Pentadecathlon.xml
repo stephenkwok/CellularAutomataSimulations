@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <simulation>
+
+        <simulationType>GameOfLife</simulationType>
+        <numberOfRows>16</numberOfRows>
+        <numberOfColumns>38</numberOfColumns>
+        <gridType>GridStandard</gridType>
+        <cellType>CellSquare</cellType>
+        <rows>
+            <row>00000000000</row>
+            <row>00000000000</row>
+            <row>00000000000</row>
+            <row>00000000000</row>
+            <row>00000100000</row>
+            <row>00001110000</row>
+            <row>00011011000</row>
+            <row>00111011100</row>
+            <row>00111011100</row>
+            <row>00111011100</row>
+            <row>00111011100</row>
+            <row>00011011000</row>
+            <row>00001110000</row>
+            <row>00000100000</row>
+            <row>00000000000</row>
+            <row>00000000000</row>
+            <row>00000000000</row>
+            <row>00000000000</row>
+        </rows>
+
+    </simulation>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <simulation>
+
+        <simulationType>SpreadingFire</simulationType>
+        <numberOfRows>3</numberOfRows>
+        <numberOfColumns>3</numberOfColumns>
+        <gridType>GridToroidal</gridType>
+        <cellType>CellSquare</cellType>
+        <rows>
+            <row>100</row>
+            <row>000</row>
+            <row>201</row>
+        </rows>
+        <probabilityCatch>1.0</probabilityCatch>
+
+    </simulation>

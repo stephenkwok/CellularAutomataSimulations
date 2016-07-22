@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <simulation>
+
+        <simulationType>SpreadingFire</simulationType>
+        <numberOfRows>12</numberOfRows>
+        <numberOfColumns>12</numberOfColumns>
+        <gridType>GridStandard</gridType>
+        <cellType>CellSquare</cellType>
+        <rows>
+            <row>000000000000</row>
+            <row>011111111110</row>
+            <row>011111111110</row>
+            <row>011111111110</row>
+            <row>011111111110</row>
+            <row>011112111110</row>
+            <row>011111111110</row>
+            <row>011111111110</row>
+            <row>011111111110</row>
+            <row>011111111110</row>
+            <row>011111111110</row>
+            <row>000000000000</row>
+        </rows>
+        <probabilityCatch>.75</probabilityCatch>
+
+    </simulation>

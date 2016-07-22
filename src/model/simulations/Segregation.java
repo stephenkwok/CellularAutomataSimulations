@@ -19,7 +19,7 @@ public class Segregation extends Simulation {
 
 	private List<Cell> currentEmptyCells;
 	private List<Cell> newEmptyCells;
-	private List<Cell> filledEmptyCells;
+	private List<Cell> processedCells;
 	private double threshold;
 	private Random randomNumberGenerator;
 	
@@ -28,6 +28,7 @@ public class Segregation extends Simulation {
 		this.threshold = threshold;
 		currentEmptyCells = new ArrayList<>();
 		newEmptyCells = new ArrayList<>();
+		processedCells = new ArrayLis<>();
 		initializeEmptyCellList();
 	}
 
@@ -35,6 +36,7 @@ public class Segregation extends Simulation {
 	public void updateGrid() {
 		super.updateGrid();
 		currentEmptyCells.addAll(newEmptyCells);
+		processedCells.clear();
 		newEmptyCells.clear();
 	}
 	
@@ -53,13 +55,12 @@ public class Segregation extends Simulation {
 	}
 	
 	private void handleEmptyCell(Cell cell) {
-		boolean cellAlreadyProcessed = !currentEmptyCells.contains(cell);
-		if (cellAlreadyProcessed) return;
+		if (cellAlreadyProcessed(cell)) return;
 		else cell.setState(cell.getState());
 	}
 	
 	private void handleNonEmptyCell(Cell cell) {
-		if (currentEmptyCells.isEmpty() || cellWasFilledInCurrentFrame(cell)) return;
+		if (currentEmptyCells.isEmpty() || cellAlreadyProcessed(cell)) return;
 		if (!cellIsSatisfied(cell)) moveCellToVacancy(cell);
 		else cell.setState(cell.getState());
 	}
@@ -83,10 +84,11 @@ public class Segregation extends Simulation {
 		Cell emptyCell = getEmptyCell();
 		emptyCell.setState(cell.getState());
 		updateCellColor(emptyCell);
-		filledEmptyCells.add(emptyCell);
+		processedCells.add(emptyCell);
 		currentEmptyCells.remove(emptyCell);
 		cell.setState(CellStates.SEGREGATION_EMPTY.value());
 		newEmptyCells.add(cell);
+		processedCells.add(cell);
 	}
 	
 	private Cell getEmptyCell() {
@@ -114,9 +116,7 @@ public class Segregation extends Simulation {
 	private boolean cellsShareSameState(Cell cell1, Cell cell2) {
 		return cell1.getState() == cell2.getState();
 	}
-	
-	private boolean cellWasFilledInCurrentFrame(Cell cell) {
-		return filledEmptyCells.contains(cell);
-	}
+
+	private boolean cellAlreadyProcessed(Cell cell) (return processedCells.contains(cell));}
 
 }
