@@ -15,6 +15,7 @@ import model.simulations.GameOfLife;
 import model.simulations.Segregation;
 import model.simulations.Simulation;
 import model.simulations.SpreadingFire;
+import model.simulations.Sugarscape;
 
 /**
  * 
@@ -147,14 +148,14 @@ public class SimulationGenerator {
 	}
 
 	/**
-	 * @return a Game of Life Simulation
+	 * @return a Simulation of Game of Life
 	 */
 	private GameOfLife getGameOfLifeSimulation() {
 		return new GameOfLife(grid);
 	}
 
 	/**
-	 * @return a Spreading Fire Simulation
+	 * @return a Simulation of Spreading Fire
 	 */
 	private SpreadingFire getSpreadingFireSimulation() {
 		double probabilityCatch = Double.parseDouble(getValue("probabilityCatch"));
@@ -162,11 +163,18 @@ public class SimulationGenerator {
 	}
 
 	/**
-	 * @return a Segregation simulation
+	 * @return a Simulation of Segregation
 	 */
 	private Segregation getSegregationSimulation() {
 		double threshold = Double.parseDouble(getValue("threshold"));
 		return new Segregation(grid, threshold);
+	}
+	
+	/**
+	 * @return a Simulation of Sugarscape
+	 */
+	private Sugarscape getSugarscapeSimulation() {
+		return new Sugarscape(grid);
 	}
 
 }

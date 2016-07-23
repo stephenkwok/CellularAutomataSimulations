@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simulation>
+
+	<simulationType>Sugarscape</simulationType>
+	<numberOfRows>15</numberOfRows>
+	<numberOfColumns>15</numberOfColumns>
+	<gridType>GridStandard</gridType>
+	<cellType>CellTriangle</cellType>
+	<rows>
+		<row>100023123113200</row>
+		<row>011022213213121</row>
+		<row>011022213213121</row>
+		<row>011022213213121</row>
+		<row>100023123113203</row>
+		<row>123321321210112</row>
+		<row>011231231231221</row>
+		<row>010002302001023</row>
+		<row>100112233311302</row>
+		<row>011123012010121</row>
+		<row>011022222222220</row>
+		<row>011333333333323</row>
+		<row>100023123113202</row>
+		<row>011022213213121</row>
+		<row>011022213213120</row>
+	</rows>
+</simulation>

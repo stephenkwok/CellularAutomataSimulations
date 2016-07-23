@@ -1,10 +1,10 @@
 package model.cells;
 /**
  * A Cell in the shape of a triangle
+ * 
+ * @author Stephen
  */
 public class CellTriangle extends Cell {
-
-    private boolean pointingUp;
 
 	/**
 	 * Instantiates triangle-shaped Cell
@@ -19,7 +19,7 @@ public class CellTriangle extends Cell {
     }
     
     /**
-     * Intializes cell dimensiosn according to its row and column: Row and columns that add up
+     * Initializes cell dimensions according to its row and column: Row and columns that add up
      * to an even number yield a triangle pointing up; Row and columns that sum to odd number yield
      * triangle pointing down;
      */

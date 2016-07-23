@@ -1,12 +1,15 @@
 package model.grid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import model.cells.Cell;
 
 /**
  * 
  * Base class for all Grids. Holds Simulation's matrix of Cells and retrieves neighbors for any given Cell
+ * 
+ * @author Stephen
  * 
  */
 public abstract class Grid {
@@ -76,8 +79,8 @@ public abstract class Grid {
 	 * Searches the 4 cardinal directions (NORTH, SOUTH, EAST, WEST)
 	 * for neighbors of the Cell at the given row and column
 	 * @param row: row of the Cell
-	 * @param column
-	 * @return
+	 * @param column: column of the Cell
+	 * @return List of cardinal neighbors for the Cell at given row and column
 	 */
 	public List<Cell> getCardinalNeighbors(int row, int column) {
 		List<Cell> neighbors = new ArrayList<>();
@@ -91,6 +94,12 @@ public abstract class Grid {
 		return neighbors;
 	}
 
+	/**
+	 * Searches the 8 Cells adjacent to the Cell at the given row and column 
+	 * @param row: row of the Cell
+	 * @param column: column of the Cell
+	 * @return List of all neighbors surrounding the Cell at the given row and column
+	 */
 	public List<Cell> getAllNeighbors(int row, int column) {
 		List<Cell> neighbors = new ArrayList<>();
 		for (int rowOffset = -1; rowOffset <= 1; rowOffset++) {
@@ -107,21 +116,72 @@ public abstract class Grid {
 		}
 		return neighbors;
 	}
+	
+	/**
+	 * Searches for neighbors in the 4 cardinal directions that are multiplier - 1
+	 * cells away from the given row and column
+	 * @param multiplier: multiplier to be applied to base row/column offsets 
+	 * @return List of extended cardinal neighbors (For example, if the row = 3, column = 3,
+	 * multiplier = 2, then the method will return the neighbors at (5,3), (1,3), (3,5), (3,1)
+	 */
+	public List<Cell> getExtendedCardinalNeighobors(int row, int column, int multiplier) {
+		if (multiplier == 0) return getCardinalNeighbors(row, column);
+		for (int i = 0; i < CARDINAL_ROW_OFFSETS.length; i++) {
+			CARDINAL_ROW_OFFSETS[i] *= multiplier;
+			CARDINAL_COLUMN_OFFSETS[i] *= multiplier;
+		}
+		List<Cell> extendedCardinalNeighbors = getCardinalNeighbors(row, column);
+		extendedCardinalNeighbors = filterNeighborList(extendedCardinalNeighbors, row, column);
+		for (int i = 0; i < CARDINAL_ROW_OFFSETS.length; i++) {
+			CARDINAL_ROW_OFFSETS[i] /= multiplier;
+			CARDINAL_COLUMN_OFFSETS[i] /= multiplier;
+		}
+		return extendedCardinalNeighbors;
+	}
+	
+	/**
+	 * Removes neighbors from list of neighbors if neighbor found is actually
+	 * the original Cell
+	 * @param neighbors: list of neighbors to be filtered
+	 * @param row: row of the original Cell
+	 * @param column: column of the original Cell
+	 */
+	private List<Cell> filterNeighborList(List<Cell> neighbors, int row, int column) {
+		return neighbors.stream().filter(cell -> !(cell.getRow() == row && cell.getColumn() == column)).collect(Collectors.toList());
+	}
 
+	/**
+	 * 
+	 * @param row: row of neighbor to be returned
+	 * @param column: column of neighbor to be returned
+	 * @return the Cell at the given row and column, or an alternate Cell as defined by the subclass
+	 */
 	private Cell getNeighbor(int row, int column) {
 		if (inBounds(row, column))
 			return cells.get(row).get(column);
 		return resolveMissingNeighbor(row, column);
 	}
 
+	/**
+	 * Checks whether a point is within the bounds of the grid
+	 * @param row: row of the point
+	 * @param column: column of the point
+	 * @return true if the point is on the Grid; false otherwise
+	 */
 	private boolean inBounds(int row, int column) {
 		return row >= 0 && column >= 0 && row < rows && column < columns;
 	}
 
+	/**
+	 * @return the number of rows in the grid
+	 */
 	public int getNumberOfRows() {
 		return rows;
 	}
 
+	/**
+	 * @return the number of columns in the grid
+	 */
 	public int getNumberOfColumns() {
 		return columns;
 	}

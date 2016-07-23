@@ -2,6 +2,9 @@ package model.cells;
 
 /**
  * A Cell in the shape of a square
+ * 
+ * @author Stephen
+ * 
  */
 public class CellSquare extends Cell {
 

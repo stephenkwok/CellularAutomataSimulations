@@ -5,7 +5,7 @@ import model.cells.Cell;
  *
  * Creates Grid with standard edges that do not wrap around.
  *
- * Created by Stephen.Kwok on 7/21/2016.
+ * @author Stephen
  */
 public class GridStandard extends Grid {
 

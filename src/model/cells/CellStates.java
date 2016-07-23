@@ -1,6 +1,9 @@
 package model.cells;
 /**
  * enum representing all possible cell states for all possible simulations
+ * 
+ * @author Stephen
+ * 
  */
 public enum CellStates {
 

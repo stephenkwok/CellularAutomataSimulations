@@ -6,6 +6,8 @@ import javafx.scene.shape.*;
  * Base class for Cells. Provides framework for setting Cell's dimensions and position in the Grid 
  * based on the Cell's height, width, row, and column. Holds state that determines color of the cell
  * within each frame of the animation of the Simulation
+ * 
+ * @author Stephen
  */
 public abstract class Cell extends Polygon {
 

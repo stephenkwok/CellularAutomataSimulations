@@ -19,6 +19,7 @@ public class Toolbar extends Observable {
 	private static final double TOOLBAR_PERCENT_OF_SCREEN_HEIGHT = .10;
 	private static final double BUTTON_PERCENT_OF_TOOLBAR_WIDTH = .70;
 	private static final double CONTAINER_CHILD_PADDING = 20;
+	private static final double CONTAINER_PADDING = 25;
 	private HBox container;
 	
 	/**
@@ -31,7 +32,7 @@ public class Toolbar extends Observable {
 		container.prefWidthProperty().bind(parentWidth);
 		container.prefHeightProperty().bind(parentHeight.multiply(TOOLBAR_PERCENT_OF_SCREEN_HEIGHT));
 		container.setAlignment(Pos.CENTER);
-		container.setPadding(new Insets(25.0));
+		container.setPadding(new Insets(CONTAINER_PADDING));
 		initializeButtons();
 	}
 
@@ -78,7 +79,7 @@ public class Toolbar extends Observable {
      */
     private void pauseOrResumeSimulation(Button button) {
         togglePauseResumeButtonText(button);
-        notifyController("pauseOrResumeSimulation");
+        notifyController("pauseOrResumeAnimation");
     }
 
     /**

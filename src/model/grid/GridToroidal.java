@@ -4,7 +4,7 @@ import model.cells.Cell;
 /**
  * a Grid with toroidal (wrapping) Grid edges
  * 
- * Created by Stephen.Kwok on 7/21/2016.
+ * @author Stephen
  */
 public class GridToroidal extends Grid {
 
@@ -36,7 +36,7 @@ public class GridToroidal extends Grid {
      */
     private int getNeighborPosition(int position, int totalPositions) {
         if (position >= totalPositions) return position % totalPositions;
-        else if (position < 0) return position + totalPositions;
+        else if (position < 0) return (position % totalPositions) + totalPositions;
         else return position;
     }
 }

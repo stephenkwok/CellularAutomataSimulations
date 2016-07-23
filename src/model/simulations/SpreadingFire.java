@@ -11,6 +11,8 @@ import model.grid.Grid;
  * 
  * Simulation of Spreading Fire
  *
+ * @author Stephen
+ *
  */
 public class SpreadingFire extends Simulation {
 
