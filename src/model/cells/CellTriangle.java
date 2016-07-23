@@ -23,22 +23,17 @@ public class CellTriangle extends Cell {
      * to an even number yield a triangle pointing up; Row and columns that sum to odd number yield
      * triangle pointing down;
      */
-    @Override
-    protected double[] initializeCellDimensions() {
-    	boolean pointingUp = (getRow() + getColumn()) % 2 == 0;
-    	double[] points;
-    	if (pointingUp) {
-    		points =  new double[] {0.0, getHeight(),
-    							 	getWidth() / 2, 0.0,
-    							 	getWidth(), getHeight()};
-    	}
-    	else {
-    		points = new double[] {0.0, 0.0,
-    							   getWidth(), 0.0,
-    							   getWidth() / 2, getHeight()};
-    	}
-    	return points;
-    }
+	@Override
+	protected double[] initializeCellDimensions() {
+		boolean pointingUp = (getRow() + getColumn()) % 2 == 0;
+		double[] points;
+		if (pointingUp) {
+			points = new double[] { 0.0, getHeight(), getWidth() / 2, 0.0, getWidth(), getHeight() };
+		} else {
+			points = new double[] { 0.0, 0.0, getWidth(), 0.0, getWidth() / 2, getHeight() };
+		}
+		return points;
+	}
 
     /**
      * Sets the Cell's position (Layout X and Y in the Grid display) according to the Cell's
