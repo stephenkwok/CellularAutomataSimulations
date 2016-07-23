@@ -1,22 +1,25 @@
 package controller;
 
-public class Main {
+import java.lang.reflect.InvocationTargetException;
 
-    private final double SCREEN_WIDTH = 800;
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+public class Main extends Application {
+
+    private final double SCREEN_WIDTH = 975;
     private final double SCREEN_HEIGHT = 800;
     private final String TITLE = "Cellular Automata Simulations";
     private Controller controller;
-    private GUI view;
 
     @Override
     public void start(Stage stage) throws ClassNotFoundException, NoSuchMethodException, SecurityException,
             InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         stage.setTitle(TITLE);
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.setHeight(SCREEN_HEIGHT);
         stage.setWidth(SCREEN_WIDTH);
-        view = new GUI(SREEEN_WIDTH, SCREEN_HEIGHT);
-        myController = new Controller(view);
+        controller = new Controller(stage);
         stage.show();
     }
 

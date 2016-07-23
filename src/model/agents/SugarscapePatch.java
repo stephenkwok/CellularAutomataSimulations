@@ -1,3 +1,7 @@
+package model.agents;
+
+import java.util.Random;
+
 public class SugarscapePatch {
 
     private final int MAX_SUGAR = 3;

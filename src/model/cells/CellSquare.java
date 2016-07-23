@@ -4,7 +4,7 @@ package model.cells;
  */
 public class CellSquare extends Cell {
 
-    public CellSquare(int initialState, int height, int width, int row, int column) {
+    public CellSquare(int initialState, double height, double width, int row, int column) {
         super(initialState, height, width, row, column);
     }
 

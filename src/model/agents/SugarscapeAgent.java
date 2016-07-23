@@ -1,3 +1,7 @@
+package model.agents;
+
+import java.util.Random;
+
 public class SugarscapeAgent {
 
     private final int INITIAL_SUGAR = 4;
@@ -12,7 +16,7 @@ public class SugarscapeAgent {
 
     public SugarscapeAgent() {
         random = new Random();
-        cuurentSugar = INITIAL_SUGAR;
+        currentSugar = INITIAL_SUGAR;
         metabolismRate = random.nextInt(MAX_METABOLISM + 1);
         vision = random.nextInt(MAX_VISION + 1);
     }

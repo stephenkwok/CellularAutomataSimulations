@@ -20,15 +20,16 @@ public class Segregation extends Simulation {
 	private List<Cell> currentEmptyCells;
 	private List<Cell> newEmptyCells;
 	private List<Cell> processedCells;
-	private double threshold;
 	private Random randomNumberGenerator;
+	private double threshold;
 	
 	public Segregation(Grid grid, double threshold) {
 		super(grid);
 		this.threshold = threshold;
+		randomNumberGenerator = new Random();
 		currentEmptyCells = new ArrayList<>();
 		newEmptyCells = new ArrayList<>();
-		processedCells = new ArrayLis<>();
+		processedCells = new ArrayList<>();
 		initializeEmptyCellList();
 	}
 
@@ -117,6 +118,6 @@ public class Segregation extends Simulation {
 		return cell1.getState() == cell2.getState();
 	}
 
-	private boolean cellAlreadyProcessed(Cell cell) (return processedCells.contains(cell));}
+	private boolean cellAlreadyProcessed(Cell cell) {return processedCells.contains(cell);}
 
 }

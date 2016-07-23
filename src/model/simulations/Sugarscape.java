@@ -1,8 +1,10 @@
 package model.simulations;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.paint.Color;
+import model.agents.SugarscapePatch;
 import model.cells.Cell;
 import model.cells.CellStates;
 import model.grid.Grid;

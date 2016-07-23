@@ -12,9 +12,9 @@
             <row>01121001</row>
             <row>22011010</row>
             <row>01212020</row>
-            <row>02121001</row>
-            <row>02121001</row>
-            <row>02121001</row>
+            <row>02120001</row>
+            <row>01222201</row>
+            <row>02111011</row>
         </rows>
         <threshold>0.25</threshold>
 

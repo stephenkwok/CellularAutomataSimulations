@@ -1,4 +1,5 @@
 package model.cells;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 
 /**
@@ -21,9 +22,10 @@ public abstract class Cell extends Polygon {
         this.width = width;
         this.row = row;
         this.column = column;
-        initializeCellDimensions();
+        points = initializeCellDimensions();
         setCellDimensions();
         setCellPosition();
+        setStroke(Color.BLACK);
     }
 
     protected abstract double[] initializeCellDimensions();

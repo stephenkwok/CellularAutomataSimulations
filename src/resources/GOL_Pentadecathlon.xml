@@ -2,8 +2,8 @@
     <simulation>
 
         <simulationType>GameOfLife</simulationType>
-        <numberOfRows>16</numberOfRows>
-        <numberOfColumns>38</numberOfColumns>
+        <numberOfRows>18</numberOfRows>
+        <numberOfColumns>11</numberOfColumns>
         <gridType>GridStandard</gridType>
         <cellType>CellSquare</cellType>
         <rows>

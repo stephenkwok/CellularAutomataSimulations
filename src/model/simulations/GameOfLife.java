@@ -38,18 +38,20 @@ public class GameOfLife extends Simulation {
 	protected void updateCellColor(Cell cell) {
 		int currentState = cell.getCurrentState();
 		if (currentState == CellStates.GAME_OF_LIFE_DEAD.value()) {
-			cell.setFill(Color.BLACK);
+			cell.setFill(Color.WHITE);
 		}
 		else {
-			cell.setFill(Color.WHITE);
+			cell.setFill(Color.BLACK);
 		}
 	}
 	
 	private int countLiveNeighbors(Cell cell) {
-		List<Cell> neighbors = getGrid().getCardinalNeighbors(cell.getRow(), cell.getColumn());
+		List<Cell> neighbors = getGrid().getAllNeighbors(cell.getRow(), cell.getColumn());
 		int count = 0;
 		for (Cell neighbor : neighbors) {
-			count += isAlive(neighbor) ? 1 : 0;
+			if (isAlive(neighbor)) {
+				count++;
+			}	
 		}
 		return count;
 	}

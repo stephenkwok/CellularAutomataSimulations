@@ -47,14 +47,14 @@ public abstract class Grid {
 	}
 
 	public Cell getCell(int row, int column) {
-		return cells.get(rows).get(columns);
+		return cells.get(row).get(column);
 	}
 
 	public List<Cell> getCardinalNeighbors(int row, int column) {
 		List<Cell> neighbors = new ArrayList<>();
 		for (int i = 0; i < CARDINAL_ROW_OFFSETS.length; i++) {
 			int neighborRow = row + CARDINAL_ROW_OFFSETS[i];
-			int neighborColumn = row + CARDINAL_COLUMN_OFFSETS[i];
+			int neighborColumn = column + CARDINAL_COLUMN_OFFSETS[i];
 			Cell neighbor = getNeighbor(neighborRow, neighborColumn);
 			if (neighbor != null)
 				neighbors.add(neighbor);
@@ -66,10 +66,10 @@ public abstract class Grid {
 		List<Cell> neighbors = new ArrayList<>();
 		for (int rowOffset = -1; rowOffset <= 1; rowOffset++) {
 			for (int columnOffset = -1; columnOffset <= 1; columnOffset++) {
-				int neighborRow = row + rowOffset;
-				int neighborColumn = column + columnOffset;
-				if (row != neighborRow && column != neighborColumn) {
-					Cell neighbor = getNeighbor(row, column);
+				if (!(rowOffset == 0 && columnOffset == 0)) {
+					int neighborRow = row + rowOffset;
+					int neighborColumn = column + columnOffset;
+					Cell neighbor = getNeighbor(neighborRow, neighborColumn);
 					if (neighbor != null) {
 						neighbors.add(neighbor);
 					}

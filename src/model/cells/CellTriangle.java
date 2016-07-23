@@ -11,18 +11,24 @@ public class CellTriangle extends Cell {
         pointingUp = (row + column) % 2 == 0;
     }
 
+    private double adjustBaseHeight() {
+    	double sideLength = getWidth();
+    	return (sideLength / 2) * Math.sqrt(3.0);
+    }
+    
     @Override
     protected double[] initializeCellDimensions() {
+    	double triangleHeight = adjustBaseHeight();
     	double[] points;
     	if (pointingUp) {
-    		points =  new double[] {0.0, getHeight(),
+    		points =  new double[] {0.0, triangleHeight,
     							 	getWidth() / 2, 0.0,
-    							 	getWidth(), getHeight()};
+    							 	getWidth(), triangleHeight};
     	}
     	else {
     		points = new double[] {0.0, 0.0,
     							   getWidth(), 0.0,
-    							   getWidth() / 2, getHeight()};
+    							   getWidth() / 2, triangleHeight};
     	}
     	return points;
     }

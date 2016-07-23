@@ -5,7 +5,7 @@
         <numberOfRows>6</numberOfRows>
         <numberOfColumns>6</numberOfColumns>
         <gridType>GridStandard</gridType>
-        <cellType>CellSquare</cellType>
+        <cellType>CellTriangle</cellType>
         <rows>
             <row>000000</row>
             <row>011000</row>

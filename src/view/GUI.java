@@ -1,5 +1,11 @@
 package view;
 
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import model.cells.Cell;
+import model.grid.Grid;
+
 public class GUI extends BorderPane {
 
     private Group gridDisplay;
@@ -11,20 +17,22 @@ public class GUI extends BorderPane {
         this.toolbar = toolbar;
         gridDisplay = new Group();
         setCenter(gridDisplay);
-        setRight(toolbar);
+        setTop(toolbar.getContainer());
 		scene = new Scene(this, screenWidth, screenHeight);
 	}
 
     public void setGridDisplay(Grid grid) {
         gridDisplay.getChildren().clear();
         for (int row = 0; row < grid.getNumberOfRows(); row++) {
-            for (int column = 0; column < grid.getNumberOfColumns; column++) {
+            for (int column = 0; column < grid.getNumberOfColumns(); column++) {
                 Cell cell = grid.getCell(row, column);
                 gridDisplay.getChildren().add(cell);
             }
         }
     }
 
-	public Scene getScene() {return new Scene();}
+	public Scene retrieveScene() {
+		return scene;
+	}
 	
 }
