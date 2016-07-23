@@ -16,12 +16,6 @@ public class CellTriangle extends Cell {
 	 */
     public CellTriangle(int initialState, double height, double width, int row, int column) {
         super(initialState, height, width, row, column);
-        pointingUp = (row + column) % 2 == 0;
-    }
-
-    private double adjustBaseHeight() {
-    	double sideLength = getWidth();
-    	return (sideLength / 2) * Math.sqrt(3.0);
     }
     
     /**
@@ -31,17 +25,17 @@ public class CellTriangle extends Cell {
      */
     @Override
     protected double[] initializeCellDimensions() {
-    	double triangleHeight = adjustBaseHeight();
+    	boolean pointingUp = (getRow() + getColumn()) % 2 == 0;
     	double[] points;
     	if (pointingUp) {
-    		points =  new double[] {0.0, triangleHeight,
+    		points =  new double[] {0.0, getHeight(),
     							 	getWidth() / 2, 0.0,
-    							 	getWidth(), triangleHeight};
+    							 	getWidth(), getHeight()};
     	}
     	else {
     		points = new double[] {0.0, 0.0,
     							   getWidth(), 0.0,
-    							   getWidth() / 2, triangleHeight};
+    							   getWidth() / 2, getHeight()};
     	}
     	return points;
     }
