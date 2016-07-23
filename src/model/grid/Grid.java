@@ -5,7 +5,9 @@ import java.util.List;
 import model.cells.Cell;
 
 /**
- * Created by Stephen.Kwok on 7/21/2016.
+ * 
+ * Base class for all Grids. Holds Simulation's matrix of Cells and retrieves neighbors for any given Cell
+ * 
  */
 public abstract class Grid {
 
@@ -15,6 +17,11 @@ public abstract class Grid {
 	private int rows;
 	private int columns;
 
+	/**
+	 * Instantiates a Grid containing a matrix of Cells
+	 * @param rows: the number of rows in the Grid
+	 * @param columns: the number of columns in the Grid
+	 */
 	public Grid(int rows, int columns) {
 		this.rows = rows;
 		this.columns = columns;
@@ -31,6 +38,9 @@ public abstract class Grid {
 	 */
 	protected abstract Cell resolveMissingNeighbor(int row, int column);
 
+	/**
+	 * Initializes Grid with row * column null Cells
+	 */
 	private void initializeGrid() {
 		cells = new ArrayList<>();
 		for (int row = 0; row < rows; row++) {
@@ -42,14 +52,33 @@ public abstract class Grid {
 		}
 	}
 
+	/**
+	 * Sets Cell at given row and column to given Cell
+	 * @param row: row where given Cell is to be placed
+	 * @param column: column where given Cell is to be placed
+	 * @param cell: the Cell to be placed at the given row and column
+	 */
 	public void setCell(int row, int column, Cell cell) {
 		cells.get(row).set(column, cell);
 	}
 
+	/**
+	 * Retrieves the Cell at a given row and column
+	 * @param row: row of the Cell to be retrieved
+	 * @param column: column of the Cell to be retrieved
+	 * @return: Cell at the given row and column
+	 */
 	public Cell getCell(int row, int column) {
 		return cells.get(row).get(column);
 	}
 
+	/**
+	 * Searches the 4 cardinal directions (NORTH, SOUTH, EAST, WEST)
+	 * for neighbors of the Cell at the given row and column
+	 * @param row: row of the Cell
+	 * @param column
+	 * @return
+	 */
 	public List<Cell> getCardinalNeighbors(int row, int column) {
 		List<Cell> neighbors = new ArrayList<>();
 		for (int i = 0; i < CARDINAL_ROW_OFFSETS.length; i++) {

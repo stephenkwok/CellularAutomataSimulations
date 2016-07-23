@@ -6,15 +6,29 @@ import java.util.List;
 import model.cells.Cell;
 import model.grid.Grid;
 
+/**
+ * Base class for all Simulations. Provides framework for updating a Grid based on the rules of a Simulation
+ * 
+ * @author Stephen
+ *
+ */
 public abstract class Simulation {
 	
-	private Grid grid;
+	private final Grid grid;
 	
+	/**
+	 * Instantiates a Simulation
+	 * @param grid: Simulation's Grid of Cells
+	 */
 	public Simulation(Grid grid) {
 		this.grid = grid;
 		initializeCellColors();
 	}
 	
+	/**
+	 * 
+	 * @param cell
+	 */
 	protected abstract void applyRulesToCell(Cell cell);
 	
 	protected abstract void updateCellColor(Cell cell);

@@ -5,6 +5,12 @@ import java.lang.reflect.InvocationTargetException;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+/**
+ * Main class Cellular Automata Simulation application
+ * 
+ * @author Stephen
+ *
+ */
 public class Main extends Application {
 
     private final double SCREEN_WIDTH = 975;
@@ -12,6 +18,9 @@ public class Main extends Application {
     private final String TITLE = "Cellular Automata Simulations";
     private Controller controller;
 
+    /**
+     * Starts the application
+     */
     @Override
     public void start(Stage stage) throws ClassNotFoundException, NoSuchMethodException, SecurityException,
             InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {

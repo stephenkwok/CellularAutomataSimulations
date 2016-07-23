@@ -22,6 +22,13 @@ import preprocessing.XMLParser;
 import view.GUI;
 import view.Toolbar;
 
+/**
+ * 
+ * Manages animation of Simulations
+ * 
+ * @author Stephen
+ *
+ */
 public class Controller implements Observer {
 
 	private final String ERROR_MESSAGE_INVALID_XML_DATA = "Invalid Grid Type, Cell Type, or Simulation Entered";
@@ -42,6 +49,10 @@ public class Controller implements Observer {
 	private boolean simulationInProgress;
 	private double animnationSpeed;
 
+	/**
+	 * Instantiates Controller that manages animation of Simulations
+	 * @param stage: stage on which to display Simulations and Toolbar that controls Simulation
+	 */
 	public Controller(Stage stage) {
 		this.stage = stage;
 		simulationInProgress = false;
@@ -53,6 +64,10 @@ public class Controller implements Observer {
 		toolbar.addObserver(this);
 	}
 
+	/**
+	 * Renders the given Grid and starts the animation
+	 * @param grid: the Simulation's Grid of Cells
+	 */
 	private void startNewSimulation(Grid grid) {
 		view.setGridDisplay(grid);
 		initializeTimeline();
@@ -60,6 +75,9 @@ public class Controller implements Observer {
 		simulationInProgress = true;
 	}
 
+	/**
+	 * Initializes the Timeline
+	 */
 	private void initializeTimeline() {
 		timeline = new Timeline();
 		timeline.setCycleCount(Timeline.INDEFINITE);
@@ -67,6 +85,9 @@ public class Controller implements Observer {
 		timeline.getKeyFrames().add(animationLoop);
 	}
 
+	/**
+	 * Speeds up animation of the Simulation
+	 */
 	private void speedUpAnimation() {
 		if (animnationSpeed <= MAX_ANIMATION_SPEED && simulationInProgress) {
 			animnationSpeed += ANIMATION_SPEED_INTERVAL;
@@ -74,6 +95,9 @@ public class Controller implements Observer {
 		}
 	}
 
+	/**
+	 * Slows down animation of the Simulation
+	 */
 	private void slowDownAnimation() {
 		if (animnationSpeed >= MIN_ANIMATION_SPEED && simulationInProgress) {
 			animnationSpeed -= ANIMATION_SPEED_INTERVAL;
@@ -81,7 +105,11 @@ public class Controller implements Observer {
 		}
 	}
 
-	private void pauseOrResumeSimulation() {
+	/**
+	 * Pauses the animation if it is currently running; 
+	 * Resumes the animation if it is paused
+	 */
+	private void pauseOrResumeAnimation() {
 		if (simulationInProgress)
 			timeline.pause();
 		else
@@ -89,17 +117,26 @@ public class Controller implements Observer {
 		simulationInProgress = !simulationInProgress;
 	}
 
+	/**
+	 * Steps to the next frame of the animation
+	 */
 	private void stepAnimation() {
 		timeline.pause();
 		simulationInProgress = false;
 		simulation.updateGrid();
 	}
 
+	/**
+	 * Stops the animation
+	 */
 	private void stopAnimation() {
 		timeline.stop();
 		simulationInProgress = false;
 	}
 
+	/**
+	 * Reads in File selected by user to start a new simulation
+	 */
 	private void selectXMLFile() {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.getExtensionFilters().addAll(new ExtensionFilter("XML Files", "*.xml"));
@@ -107,6 +144,10 @@ public class Controller implements Observer {
 		initializeNewSimulation(selectedFile);
 	}
 
+	/**
+	 * Generates Simulation specified by XML file 
+	 * @param file: file containing Simulation parameters
+	 */
 	private void initializeNewSimulation(File file) {
 		Document document = xmlParser.parseXMLFile(file);
 		try {
@@ -119,6 +160,9 @@ public class Controller implements Observer {
 		}
 	}
 
+	/**
+	 * Responds to clicks of Toolbar buttons
+	 */
 	@Override
 	public void update(Observable o, Object arg) {
 		String command = (String) arg;
