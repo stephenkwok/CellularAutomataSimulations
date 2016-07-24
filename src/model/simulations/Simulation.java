@@ -23,13 +23,21 @@ public abstract class Simulation {
 	}
 	
 	/**
+	 * Updates the cell's state according to the rules of the simulation 
 	 * 
-	 * @param cell
+	 * @param cell: cell to apply rules to
 	 */
 	protected abstract void applyRulesToCell(Cell cell);
 	
+	/**
+	 * Updates the cell's color according to its current state
+	 * @param cell: cell whose color is to be updated
+	 */
 	protected abstract void updateCellColor(Cell cell);
 	
+	/**
+	 * Sets the cell's initial color according to its initial state
+	 */
 	private void initializeCellColors() {
 		for (int row = 0; row < grid.getNumberOfRows(); row++) {
 			for (int column = 0; column < grid.getNumberOfColumns(); column++) {
@@ -38,6 +46,10 @@ public abstract class Simulation {
 		}
 	}
 	
+	/**
+	 * Updates the state and color of every cell in the grid. Resets each cell's 
+	 * hasChanged value back to false once all cells have been processed
+	 */
 	public void updateGrid() {
 		for (int row = 0; row < grid.getNumberOfRows(); row++) {
 			for (int column = 0; column < grid.getNumberOfColumns(); column++) {
@@ -49,6 +61,9 @@ public abstract class Simulation {
 		resetCellChangeStates();
 	}
 	
+	/**
+	 * Resets the hasChanged value of each cell in the grid to false
+	 */
 	private void resetCellChangeStates() {
 		for (int row = 0; row < grid.getNumberOfRows(); row++) {
             for (int column = 0; column < grid.getNumberOfColumns(); column++) {
@@ -57,6 +72,9 @@ public abstract class Simulation {
         }
 	}
 	
+	/**
+	 * @return the Simulation's grid
+	 */
 	public Grid getGrid() {
 		return grid;
 	}
